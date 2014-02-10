@@ -1,12 +1,12 @@
 <?php
 /**
- * Mailin
- * API to send the mail with help of mailin smtp.
+ * Class Mailin
+ * API to send the mail with help of SendinBlue smtp.
  * Username and password are required to send the mail.
- * Your details are available at http://mysmtp.mailin.fr/parameters
+ * Your details are available at http://mysmtp.sendinblue.com/parameters
  * 
- * @author Mailin 
- * @updated 19 Dec 2012
+ * @author SendinBlue 
+ * @updated 10 Feb 2014
  * @version 1.0
  */
 class Mailin
