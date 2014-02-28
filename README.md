@@ -148,5 +148,5 @@ Error Code: 902
 Error Description: Unable to send email. Exception message was:  Account Terminated.
 
 Error Code: 903
-Error Description: Unable to send email. Exception message was: The parameters you passed are not well formated. Please refer to https://github.com/DTSL/mailin-smtp-api or contact us at contact at mailinblue.com.
+Error Description: Unable to send email. Exception message was: The parameters you passed are not well formated. Please refer to https://github.com/DTSL/mailin-smtp-api or contact us at contact at sendinblue.com.
 ```
