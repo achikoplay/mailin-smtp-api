@@ -1,16 +1,16 @@
-# Mailin SMTP Library 1.0 #
-http://mysmtp.mailin.fr
+# SendinBlue SMTP Library 1.0 #
+http://mysmtp.sendinblue.com
 
-This library can be used in your PHP script to send the emails using MAILIN-SMTP Services. 
+This library can be used in your PHP script to send the emails using SENDINBLUE-SMTP Services. 
 
-**(c) 2013 Mailin**
+**(c) 2014 SendinBlue**
 
 <hr>
 
-# How To Install The Mailin SMTP Library #
+# How To Install The SendinBlue SMTP Library #
 
 ## Step 1: ##
-Download the Mailin SMTP Library “Mailin.php” from 
+Download the SendinBlue SMTP Library “Mailin.php” from 
 <code>https://github.com/DTSL/mailin-smtp-api.git</code>
 
 ## Step 2: ##
@@ -22,7 +22,7 @@ include 'path/to/mailin-api/Mailin.php';
 ```
 
 ## Step 3: ##
-Initialized the Mailin object with your Mailin SMTP credentials. Credentials can be found at <code>http://mysmtp.mailin.fr/parameters</code>
+Initialized the Mailin object with your SendinBlue SMTP credentials. Credentials can be found at <code>http://mysmtp.sendinblue.com/parameters</code>
 ```php
 <?php
 $mailin = new Mailin('username', 'password');
@@ -78,13 +78,39 @@ If you want to add IP in mail headers, you can add as
   setSubject('Subject goes here')->
   setText('Hello World!')->
   setHtml('<strong>Hello World!</strong>')->
-  addAttachment("path/foo.txt");
+  addAttachment("path/foo.txt")->
 
 /**
    If you wan to attach multiple attachments, you can use an array with the addAttachment function. For example:
 addAttachment(array("path/filename1.txt","path/filename2.txt"))
 
 */
+
+/**
+
+#### How to send attachment/s generated on the fly ####
+
+If you want to send attachment/s generated on the fly you have to pass your attachment/s filename & its base64 encoded chunk data in key-value pair in an array with createAttachment function. For example:
+
+createAttachment(array(“YourFileName1.Extension” => “Base64EncodedChunkData1″, “YourFileName2.Extension” => “Base64EncodedChunkData2″))
+
+Below, sample code using [html2pdf](http://html2pdf.fr) function (You can send other kind of files but for our example, we choose to send a pdf file)
+
+**NOTE:** Please add line of codes between commented area from start & end of pdf creation before Step 4.
+
+*/
+  
+// Start pdf creation
+require_once('html2pdf/html2pdf.class.php'); // link to html2pdf file
+$content = "<h1>My PDF header</h1><br>This is my PDF content<br>";
+$html2pdf = new HTML2PDF('P','A4','fr');
+$html2pdf->WriteHTML($content);
+$contentPdf = $html2pdf->Output('', true);
+$attachment_content = chunk_split(base64_encode($contentPdf));
+// End pdf creation
+
+createAttachment(array('example.pdf'=>$attachment_content));
+
 ?>
 ```
 
@@ -109,7 +135,7 @@ In case of unsuccessful email sent, the result will be false with the appropriat
 ```
  
 ## Error Codes ##
-Below is a list of common Mailin SMTP error codes and their meanings.
+Below is a list of common SendinBlue SMTP error codes and their meanings.
 
 ```php
 Error Code: 421

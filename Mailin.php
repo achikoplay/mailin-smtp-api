@@ -29,6 +29,7 @@ class Mailin
           $text,
           $html,
           $attachment_list,
+          $raw_attachment_list,
           $header_list = array();
 
   protected $use_headers;
@@ -378,6 +379,17 @@ class Mailin
    * @param array $files - The list of files to attach
    * @return  the Mailin object
    */
+
+  /**
+   * getrawAttachments
+   * Get the list of raw file attachments
+   * @return Array of indexed file attachments
+   */
+  public function getrawAttachments()
+  {
+    return $this->raw_attachment_list;
+  }
+
   public function setAttachments(array $files)
   {
     $this->attachment_list = array();
@@ -420,6 +432,20 @@ class Mailin
 	}
     return $this;
   }
+
+  /**
+   * createAttachment
+   * Creates a new email attachment, given the file name & its base64 encoded chunk.
+   * @param String/Array $file - The file(s) to attach.
+   * @return  the Mailin object.
+   */
+  public function createAttachment($files)
+  {
+    if(is_array($files)) {
+       $this->raw_attachment_list[] = $files;
+    }
+    return $this;
+  }  
 
   /**
    * _getAttachmentInfo
@@ -864,7 +890,14 @@ class Mailin
     $request = $this->domain;
 	
 	$atcmnt = $this->getAttachments();
-
+    $rawAtcmnt = $this->getrawAttachments();
+    if($this->getrawAttachments())
+    {
+      foreach ($rawAtcmnt[0] as $key => $value) {
+        $rawAtcmnt[0][$key] = urlencode($value);
+      }
+      $data['raw_attachments'] = serialize($rawAtcmnt[0]);
+    }
     // we'll append the Bcc, Cc, replyto, to, files to the url endpoint (GET)
     // so that we can still post array.
     $request.= "?" .
