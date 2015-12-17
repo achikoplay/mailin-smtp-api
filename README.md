@@ -1,7 +1,10 @@
 # SendinBlue SMTP Library 1.0 #
 http://mysmtp.sendinblue.com
 
-This library can be used in your PHP script to send the emails using SENDINBLUE-SMTP Services. 
+This library can be used in your PHP script to send the emails using SENDINBLUE-SMTP Services.
+
+This library is outdated, for the new library refer <code>https://github.com/mailin-api/</code>
+Latest Documentation for transactional emails is available here <code>https://apidocs.sendinblue.com/tutorial-sending-transactional-email/</code>
 
 **(c) 2014 SendinBlue**
 
