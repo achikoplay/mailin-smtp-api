@@ -2,7 +2,7 @@
 
 ### Note: ###
 
-The library is now maintained at https://github.com/mailin-api/
+The library is now maintained at <code>https://github.com/mailin-api/</code>
 The latest Documentation for transactional emails is available here <code>https://apidocs.sendinblue.com/tutorial-sending-transactional-email/</code>
 
 This library can be used in your PHP script to send the emails using SENDINBLUE-SMTP Services.
