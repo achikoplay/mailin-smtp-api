@@ -2,6 +2,14 @@
 
 ### Note: ###
 
+**API V3.0 ( LTS )**
+
+The library is now maintained at <code>https://github.com/sendinblue/</code>
+
+The latest Documentation for transactional emails is available here <code>https://developers.sendinblue.com/v3.0/reference#sendtransacemail-1</code>
+
+**API V2.0**
+
 The library is now maintained at <code>https://github.com/mailin-api/</code>
 
 The latest Documentation for transactional emails is available here <code>https://apidocs.sendinblue.com/tutorial-sending-transactional-email/</code>
